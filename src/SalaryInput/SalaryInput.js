@@ -21,7 +21,7 @@ class SalaryInput extends Component {
                             <Input placeholder="Enter your net monthly salary" value={salary}
                                    onChange={this.handleChange}/>
                             <InputGroupAddon addonType="append">
-                                <Button color="primary" onClick={this.handleStart}>Start</Button>
+                                <Button color="primary" onClick={this.handleStart}>Start counting money</Button>
                             </InputGroupAddon>
                         </InputGroup>
                     </Col>
@@ -30,16 +30,21 @@ class SalaryInput extends Component {
         );
     };
 
-    handleChange = (event) => {
-        this.setState({salary: event.target.value})
+    handleChange = ({target}) => {
+        const {value} = target;
+        this.setState({salary: value})
     };
 
     handleStart = () => {
+        const {salary} = this.state;
+
         fetch(`http://localhost:8080/`, {
             method: 'POST',
-            body: {
-                salary: this.state.salary
-            }
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({salary})
         }).then(r => r.json()).then(json => {
             const {token} = json;
             this.props.history.push(`/c/${token}`);
