@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
+import {Button, Col, Container, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 
 class App extends Component {
     state = {
@@ -10,14 +11,33 @@ class App extends Component {
     render() {
         const {salary, total} = this.state;
         return (
-            <div>
-                <div>
-                    <input placeholder="Enter your net monthly salary" value={salary}
-                           onChange={this.handleChange}/>
-                    <input type="button" value="Start" onClick={this.handleStart}/>
-                </div>
-                <div>You have earned {total} &euro; so far</div>
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        <h1 className={'mt-100'}>Time is money</h1>
+                    </Col>
+                </Row>
+                {
+                    !total &&
+                    <Row>
+                        <Col>
+                            <InputGroup>
+                                <Input placeholder="Enter your net monthly salary" value={salary}
+                                       onChange={this.handleChange}/>
+                                <InputGroupAddon addonType="append">
+                                    <Button color="primary" onClick={this.handleStart}>Start</Button>
+                                </InputGroupAddon>
+                            </InputGroup>
+                        </Col>
+                    </Row>
+                }
+                {
+                    total &&
+                    <Row>
+                        <Col>You have earned {total} &euro; so far</Col>
+                    </Row>
+                }
+            </Container>
         );
     }
 
