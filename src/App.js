@@ -12,9 +12,9 @@ class App extends Component {
         const {salary, total} = this.state;
         return (
             <Container>
-                <Row>
+                <Row style={{marginTop: '150px', marginBottom: '10px'}}>
                     <Col>
-                        <h1 className={'mt-100'}>Time is money</h1>
+                        <h1>Time is money</h1>
                     </Col>
                 </Row>
                 {
