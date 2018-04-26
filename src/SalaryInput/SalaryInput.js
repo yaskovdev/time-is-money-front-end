@@ -15,6 +15,11 @@ class SalaryInput extends Component {
 
         return (
             <div>
+                <Row style={{marginTop: '150px', marginBottom: '10px'}}>
+                    <Col>
+                        <h1>Time is money</h1>
+                    </Col>
+                </Row>
                 <Row>
                     <Col>
                         <InputGroup>

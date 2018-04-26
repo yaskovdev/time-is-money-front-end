@@ -15,7 +15,9 @@ class Counter extends Component {
                 let sum = 0;
                 setInterval(() => {
                     sum += delta / divider;
-                    this.setState({total: sum.toLocaleString(undefined, {minimumFractionDigits: 4})});
+                    this.setState({
+                        total: this.format(sum)
+                    });
                 }, 1000 / divider);
             }
         );
@@ -23,11 +25,23 @@ class Counter extends Component {
 
     render() {
         return (
-            <Row>
-                <Col>You have earned {this.state.total} &euro; so far</Col>
-            </Row>
+            <div>
+                <Row style={{marginTop: '150px'}}>
+                    <Col className="display-3 text-center">You have earned this month</Col>
+                </Row>
+                <Row style={{marginTop: '130px'}}>
+                    <Col className="display-1 text-center">{this.state.total}</Col>
+                </Row>
+            </div>
         );
     };
+
+    format = (number) => number.toLocaleString(undefined, {
+        style: 'currency',
+        currency: 'EUR',
+        minimumFractionDigits: 4,
+        maximumFractionDigits: 4
+    });
 }
 
 export default Counter;
