@@ -40,6 +40,11 @@ class Counter extends Component {
                     <Col className="h4 text-center">Today: {this.state.salaryThisDay}</Col>
                     <Col className="h4 text-center">This hour: {this.state.salaryThisHour}</Col>
                 </Row>
+                <Row style={{marginTop: '160px'}}>
+                    <Col className="text-center">
+                        <small>Share this counter with your friend: <a href={window.location.href}>{window.location.href}</a></small>
+                    </Col>
+                </Row>
             </div>
         );
     };
