@@ -1,21 +1,26 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
-
+import moment from 'moment'
 
 class Counter extends Component {
 
-    state = {salarySinceBeginningOfTheMonth: ''};
+    state = {salaryThisMonth: ''};
 
     componentDidMount() {
         const {match} = this.props;
         fetch(`http://localhost:8080/${match.params.counterId}`).then(r => r.json()).then(json => {
                 const {salary} = json;
-                const salaryPerSecond = salary / (30 * 24 * 3600);
+                const salaryPerMs = salary / (30 * 24 * 3600 * 1000);
 
                 setInterval(() => {
-                    const secondsSinceBeginningOfTheMonth = this.secondsSinceBeginningOfTheMonth();
-                    this.setState({salarySinceBeginningOfTheMonth: this.format(secondsSinceBeginningOfTheMonth * salaryPerSecond)});
-                }, 1000);
+                    this.setState({
+                        salaryThisYear: this.format(this.msSinceBeginningOfTheYear() * salaryPerMs),
+                        salaryThisMonth: this.format(this.msSinceBeginningOfTheMonth() * salaryPerMs),
+                        salaryThisWeek: this.format(this.msSinceBeginningOfTheWeek() * salaryPerMs),
+                        salaryThisDay: this.format(this.msSinceBeginningOfTheDay() * salaryPerMs),
+                        salaryThisHour: this.format(this.msSinceBeginningOfTheHour() * salaryPerMs)
+                    });
+                }, 200);
             }
         );
     };
@@ -24,10 +29,16 @@ class Counter extends Component {
         return (
             <div>
                 <Row style={{marginTop: '150px'}}>
-                    <Col className="display-3 text-center">You have earned this month</Col>
+                    <Col className="display-3 text-center">You have earned this year</Col>
                 </Row>
                 <Row style={{marginTop: '130px'}}>
-                    <Col className="display-1 text-center">{this.state.salarySinceBeginningOfTheMonth}</Col>
+                    <Col className="display-1 text-center">{this.state.salaryThisYear}</Col>
+                </Row>
+                <Row style={{marginTop: '190px'}}>
+                    <Col className="h4 text-center">Month: {this.state.salaryThisMonth}</Col>
+                    <Col className="h4 text-center">This week: {this.state.salaryThisWeek}</Col>
+                    <Col className="h4 text-center">Today: {this.state.salaryThisDay}</Col>
+                    <Col className="h4 text-center">This hour: {this.state.salaryThisHour}</Col>
                 </Row>
             </div>
         );
@@ -40,11 +51,15 @@ class Counter extends Component {
         maximumFractionDigits: 4
     });
 
-    secondsSinceBeginningOfTheMonth = () => {
-        const now = new Date();
-        const firstDay = new Date(now.getFullYear(), now.getMonth(), 1);
-        return (now - firstDay) / 1000;
-    };
+    msSinceBeginningOfTheWeek = () => moment() - moment().startOf('week');
+
+    msSinceBeginningOfTheDay = () => moment() - moment().startOf('day');
+
+    msSinceBeginningOfTheHour = () => moment() - moment().startOf('hour');
+
+    msSinceBeginningOfTheMonth = () => moment() - moment().startOf('month');
+
+    msSinceBeginningOfTheYear = () => moment() - moment().startOf('year');
 }
 
 export default Counter;
