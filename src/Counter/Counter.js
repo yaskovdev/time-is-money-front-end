@@ -4,22 +4,17 @@ import {Col, Row} from 'reactstrap';
 
 class Counter extends Component {
 
-    state = {secondsSinceBeginningOfTheMonth: '', salaryPerSecond: '', salarySinceBeginningOfTheMonth: '', total: ''};
+    state = {salarySinceBeginningOfTheMonth: ''};
 
     componentDidMount() {
         const {match} = this.props;
         fetch(`http://localhost:8080/${match.params.counterId}`).then(r => r.json()).then(json => {
                 const {salary} = json;
-                const secondsSinceBeginningOfTheMonth = this.secondsSinceBeginningOfTheMonth();
                 const salaryPerSecond = salary / (30 * 24 * 3600);
-                const salarySinceBeginningOfTheMonth = secondsSinceBeginningOfTheMonth * salaryPerSecond;
-                this.setState({secondsSinceBeginningOfTheMonth, salaryPerSecond, salarySinceBeginningOfTheMonth});
 
                 setInterval(() => {
-                    this.setState({secondsSinceBeginningOfTheMonth: this.secondsSinceBeginningOfTheMonth()});
-                    const {secondsSinceBeginningOfTheMonth, salaryPerSecond} = this.state;
-                    const salarySinceBeginningOfTheMonth = secondsSinceBeginningOfTheMonth * salaryPerSecond;
-                    this.setState({salarySinceBeginningOfTheMonth});
+                    const secondsSinceBeginningOfTheMonth = this.secondsSinceBeginningOfTheMonth();
+                    this.setState({salarySinceBeginningOfTheMonth: this.format(secondsSinceBeginningOfTheMonth * salaryPerSecond)});
                 }, 1000);
             }
         );
