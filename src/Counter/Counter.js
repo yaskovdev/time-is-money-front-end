@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
 
 
-export class Counter extends Component {
+class Counter extends Component {
 
     state = {total: ''};
 
-    componentDidMount = () => {
+    componentDidMount() {
         const {match} = this.props;
         fetch(`http://localhost:8080/${match.params.counterId}`).then(r => r.json()).then(json => {
                 const {salary} = json;
@@ -21,7 +21,7 @@ export class Counter extends Component {
         );
     };
 
-    render = () => {
+    render() {
         return (
             <Row>
                 <Col>You have earned {this.state.total} &euro; so far</Col>
@@ -29,3 +29,5 @@ export class Counter extends Component {
         );
     };
 }
+
+export default Counter;

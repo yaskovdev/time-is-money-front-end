@@ -10,7 +10,7 @@ class SalaryInput extends Component {
         total: ''
     };
 
-    render = () => {
+    render() {
         const {salary} = this.state;
 
         return (
