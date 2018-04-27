@@ -2,7 +2,7 @@
   "name": "time-is-money-front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://yaskovdev.github.io/time-is-money-front-end",
+  "homepage": "http://income.yaskovdev.com",
   "dependencies": {
     "bootstrap": "^4.0.0",
     "moment": "^2.22.1",
