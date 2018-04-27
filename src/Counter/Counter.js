@@ -14,7 +14,7 @@ class Counter extends Component {
 
                 setInterval(() => {
                     this.setState({
-                        salaryThisYear: this.format(this.msSinceBeginningOfTheYear() * salaryPerMs),
+                        salaryThisYear: this.format(this.msSinceBeginningOfTheYear() * salaryPerMs, 4),
                         salaryThisMonth: this.format(this.msSinceBeginningOfTheMonth() * salaryPerMs),
                         salaryThisWeek: this.format(this.msSinceBeginningOfTheWeek() * salaryPerMs),
                         salaryThisDay: this.format(this.msSinceBeginningOfTheDay() * salaryPerMs),
@@ -43,18 +43,18 @@ class Counter extends Component {
                 </Row>
                 <Row style={{marginTop: '160px'}}>
                     <Col className="text-center">
-                        <small>Share this counter with your friend: <a href={link}>{link}</a></small>
+                        <small>Save this counter or share with your friend: <a href={link}>{link}</a></small>
                     </Col>
                 </Row>
             </div>
         );
     };
 
-    format = (number) => number.toLocaleString(undefined, {
+    format = (number, fractionDigits = 2) => number.toLocaleString(undefined, {
         style: 'currency',
         currency: 'EUR',
-        minimumFractionDigits: 4,
-        maximumFractionDigits: 4
+        minimumFractionDigits: fractionDigits,
+        maximumFractionDigits: fractionDigits
     });
 
     msSinceBeginningOfThe = (unit) => () => moment() - moment().startOf(unit);

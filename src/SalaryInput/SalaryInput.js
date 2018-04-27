@@ -23,8 +23,8 @@ class SalaryInput extends Component {
                 <Row>
                     <Col>
                         <InputGroup>
-                            <Input placeholder="Enter your net monthly salary" value={salary}
-                                   onChange={this.handleChange}/>
+                            <Input autoFocus placeholder="Enter your net monthly income" value={salary}
+                                   onChange={this.handleChange} innerRef={input => this.incomeInput = input}/>
                             <InputGroupAddon addonType="append">
                                 <Button color="primary" onClick={this.handleStart}>Start counting money</Button>
                             </InputGroupAddon>
@@ -43,17 +43,21 @@ class SalaryInput extends Component {
     handleStart = () => {
         const {salary} = this.state;
 
-        fetch(`http://localhost:8080/`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({salary})
-        }).then(r => r.json()).then(json => {
-            const {token} = json;
-            this.props.history.push(`/c/${token}`);
-        });
+        if (salary.trim() === '') {
+            this.incomeInput.focus();
+        } else {
+            fetch(`http://localhost:8080/`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, */*',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({salary})
+            }).then(r => r.json()).then(json => {
+                const {token} = json;
+                this.props.history.push(`/c/${token}`);
+            });
+        }
     }
 }
 
