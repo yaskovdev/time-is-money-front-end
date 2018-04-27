@@ -1,7 +1,12 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
-import moment from 'moment'
+import moment from 'moment';
+import numeral from 'numeral';
+import 'numeral/locales';
 
+numeral.zeroFormat('I AM IRONMAN');
+numeral.nullFormat('N/A');
+numeral.locale('en');
 class Counter extends Component {
 
     state = {};
@@ -56,6 +61,8 @@ class Counter extends Component {
         minimumFractionDigits: fractionDigits,
         maximumFractionDigits: fractionDigits
     });
+
+    format2 = (number, fractionDigits = 2) => numeral(number).format('0.00 a $');
 
     msSinceBeginningOfThe = (unit) => () => moment() - moment().startOf(unit);
 
