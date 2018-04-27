@@ -4,7 +4,7 @@ import moment from 'moment'
 
 class Counter extends Component {
 
-    state = {salaryThisMonth: ''};
+    state = {};
 
     componentDidMount() {
         const {match} = this.props;
