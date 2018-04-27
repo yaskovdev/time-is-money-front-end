@@ -26,6 +26,7 @@ class Counter extends Component {
     };
 
     render() {
+        const link = window.location.href;
         return (
             <div>
                 <Row style={{marginTop: '150px'}}>
@@ -42,7 +43,7 @@ class Counter extends Component {
                 </Row>
                 <Row style={{marginTop: '160px'}}>
                     <Col className="text-center">
-                        <small>Share this counter with your friend: <a href={window.location.href}>{window.location.href}</a></small>
+                        <small>Share this counter with your friend: <a href={link}>{link}</a></small>
                     </Col>
                 </Row>
             </div>
@@ -56,15 +57,17 @@ class Counter extends Component {
         maximumFractionDigits: 4
     });
 
-    msSinceBeginningOfTheWeek = () => moment() - moment().startOf('week');
+    msSinceBeginningOfThe = (unit) => () => moment() - moment().startOf(unit);
 
-    msSinceBeginningOfTheDay = () => moment() - moment().startOf('day');
+    msSinceBeginningOfTheYear = this.msSinceBeginningOfThe('year');
 
-    msSinceBeginningOfTheHour = () => moment() - moment().startOf('hour');
+    msSinceBeginningOfTheMonth = this.msSinceBeginningOfThe('month');
 
-    msSinceBeginningOfTheMonth = () => moment() - moment().startOf('month');
+    msSinceBeginningOfTheWeek = this.msSinceBeginningOfThe('week');
 
-    msSinceBeginningOfTheYear = () => moment() - moment().startOf('year');
+    msSinceBeginningOfTheDay = this.msSinceBeginningOfThe('day');
+
+    msSinceBeginningOfTheHour = this.msSinceBeginningOfThe('hour');
 }
 
 export default Counter;
