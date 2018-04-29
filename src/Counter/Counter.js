@@ -63,7 +63,7 @@ class Counter extends Component {
 
     msSinceBeginningOfTheMonth = this.msSinceBeginningOfThe('month');
 
-    msSinceBeginningOfTheWeek = this.msSinceBeginningOfThe('week');
+    msSinceBeginningOfTheWeek = this.msSinceBeginningOfThe('isoWeek');
 
     msSinceBeginningOfTheDay = this.msSinceBeginningOfThe('day');
 
