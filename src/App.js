@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import './App.css';
 import {Container} from 'reactstrap';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
-import Counter from "./Counter/Counter";
-import SalaryInput from "./SalaryInput/SalaryInput";
+import Counter from './Counter/Counter';
+import SalaryInput from './SalaryInput/SalaryInput';
 
 class App extends Component {
 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {withRouter} from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 import {Button, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
 
 
@@ -42,7 +42,7 @@ class SalaryInput extends Component {
         if (income.trim() === '') {
             this.incomeInput.focus();
         } else {
-            fetch(`http://localhost:8080/`, {
+            fetch('http://localhost:8080/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
