@@ -42,7 +42,7 @@ class SalaryInput extends Component {
         if (income.trim() === '') {
             this.incomeInput.focus();
         } else {
-            fetch('http://localhost:8080/', {
+            fetch('http://timeismoney.ga/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',

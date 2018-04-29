@@ -8,7 +8,7 @@ class Counter extends Component {
 
     componentDidMount() {
         const {match} = this.props;
-        fetch(`http://localhost:8080/${match.params.counterId}`).then(r => r.json()).then(json => {
+        fetch(`http://timeismoney.ga/${match.params.counterId}`).then(r => r.json()).then(json => {
                 const {salary} = json;
                 const salaryPerMs = salary / (30 * 24 * 3600 * 1000);
 
