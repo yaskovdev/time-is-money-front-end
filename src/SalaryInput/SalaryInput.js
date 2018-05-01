@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Button, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
-import { FormattedMessage, defineMessages, injectIntl, intlShape, formatMessage } from 'react-intl';
+import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
 class SalaryInput extends Component {
 

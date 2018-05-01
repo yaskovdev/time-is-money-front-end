@@ -1,0 +1,11 @@
+{
+    "home.title": "Aeg on raha",
+    "home.placeholder": "Sisestage oma igakuine netosissetulek",
+    "home.btn": "Alustage raha arvestamist",
+    "counter.message": "Sa oled sel aastal teeninud",
+    "counter.message-month": "Sel kuul: {salary}",
+    "counter.message-week": "Selle nädala: {salary}",
+    "counter.message-today": "Täna: {salary}",
+    "counter.message-hour": "Selle tunniga: {salary}",
+    "counter.share-link": "Salvesta see loendur või jagage oma sõbraga: {link}"
+}
