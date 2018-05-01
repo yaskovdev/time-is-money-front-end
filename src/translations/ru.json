@@ -1,0 +1,11 @@
+{
+    "home.title": "Время - деньги!",
+    "home.placeholder": "Пожалуйста, введите Ваш доход за месяц",
+    "home.btn": "Посчитать доходы",
+    "counter.message": "В этом году Вы заработали",
+    "counter.message-month": "В этом месяце: {salary}",
+    "counter.message-week": "На этой неделе: {salary}",
+    "counter.message-today": "Сегодня: {salary}",
+    "counter.message-hour": "За этот час: {salary}",
+    "counter.share-link": "Сохранить этот счётчик или поделиться с друзьями: {link}"
+}

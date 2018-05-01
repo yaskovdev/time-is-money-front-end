@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {Button, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
-
+import { FormattedMessage, defineMessages, injectIntl, intlShape, formatMessage } from 'react-intl';
 
 class SalaryInput extends Component {
 
@@ -9,21 +9,38 @@ class SalaryInput extends Component {
 
     render() {
         const {income} = this.state;
+        const placeholder = this.props.intl.formatMessage({
+            id: 'home.placeholder',
+            description: 'Enter your net monthly income',
+            defaultMessage: 'Enter your net monthly income'
+        });
 
         return <div>
             <Row style={{marginTop: '150px', marginBottom: '10px'}}>
                 <Col>
-                    <h1>Time is money</h1>
+                    <h1>
+                        <FormattedMessage
+                            id='home.title'
+                            description='Time is money'
+                            defaultMessage='Time is money'
+                        />
+                    </h1>
                 </Col>
             </Row>
             <Row>
                 <Col>
                     <InputGroup>
-                        <Input autoFocus placeholder="Enter your net monthly income" value={income}
+                        <Input autoFocus placeholder={placeholder} value={income}
                                onChange={this.handleChange} innerRef={input => this.incomeInput = input}
                                onKeyPress={target => target.charCode === 13 && this.handleStart()}/>
                         <InputGroupAddon addonType="append">
-                            <Button color="primary" onClick={this.handleStart}>Start counting money</Button>
+                            <Button color="primary" onClick={this.handleStart}>
+                                <FormattedMessage
+                                    id='home.btn'
+                                    description='Start counting money'
+                                    defaultMessage='Start counting money'
+                                />
+                            </Button>
                         </InputGroupAddon>
                     </InputGroup>
                 </Col>
@@ -57,4 +74,8 @@ class SalaryInput extends Component {
     }
 }
 
-export default withRouter(SalaryInput);
+SalaryInput.propTypes = {
+    intl: intlShape.isRequired
+};
+
+export default withRouter(injectIntl(SalaryInput));

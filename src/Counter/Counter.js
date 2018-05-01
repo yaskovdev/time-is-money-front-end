@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
 import moment from 'moment'
+import { FormattedMessage } from 'react-intl';
 
 class Counter extends Component {
 
@@ -30,20 +31,71 @@ class Counter extends Component {
         return (
             <div>
                 <Row style={{marginTop: '150px'}}>
-                    <Col className="display-3 text-center">You have earned this year</Col>
+                    <Col className="display-3 text-center">
+                        <FormattedMessage
+                            id='counter.message'
+                            description='You have earned this year'
+                            defaultMessage='You have earned this year'
+                        />
+                    </Col>
                 </Row>
                 <Row style={{marginTop: '130px'}}>
                     <Col className="display-1 text-center">{this.state.salaryThisYear}</Col>
                 </Row>
                 <Row style={{marginTop: '190px'}}>
-                    <Col className="h4 text-center">Month: {this.state.salaryThisMonth}</Col>
-                    <Col className="h4 text-center">This week: {this.state.salaryThisWeek}</Col>
-                    <Col className="h4 text-center">Today: {this.state.salaryThisDay}</Col>
-                    <Col className="h4 text-center">This hour: {this.state.salaryThisHour}</Col>
+                    <Col className="h4 text-center">
+                        <FormattedMessage
+                            id='counter.message-month'
+                            description='Month: {salary}'
+                            defaultMessage='Month: {salary}'
+                            values={{
+                                salary: this.state.salaryThisMonth
+                            }}
+                        />
+                    </Col>
+                    <Col className="h4 text-center">
+                        <FormattedMessage
+                            id='counter.message-week'
+                            description='This week: {salary}'
+                            defaultMessage='This week: {salary}'
+                            values={{
+                                salary: this.state.salaryThisWeek
+                            }}
+                        />
+                    </Col>
+                    <Col className="h4 text-center">
+                        <FormattedMessage
+                            id='counter.message-today'
+                            description='Today: {salary}'
+                            defaultMessage='Today: {salary}'
+                            values={{
+                                salary: this.state.salaryThisDay
+                            }}
+                        />
+                    </Col>
+                    <Col className="h4 text-center">
+                        <FormattedMessage
+                            id='counter.message-hour'
+                            description='This hour: {salary}'
+                            defaultMessage='This hour: {salary}'
+                            values={{
+                                salary: this.state.salaryThisHour
+                            }}
+                        />
+                    </Col>
                 </Row>
                 <Row style={{marginTop: '160px'}}>
                     <Col className="text-center">
-                        <small>Save this counter or share with your friend: <a href={link}>{link}</a></small>
+                        <small>
+                            <FormattedMessage
+                                id='counter.share-link'
+                                description='Save this counter or share with your friend: {link}'
+                                defaultMessage='Save this counter or share with your friend: {link}'
+                                values={{
+                                    link: <a href={link}>{link}</a>
+                                }}
+                            />
+                        </small>
                     </Col>
                 </Row>
             </div>

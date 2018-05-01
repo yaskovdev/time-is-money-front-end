@@ -1,0 +1,11 @@
+{
+    "home.title": "Time is money",
+    "home.placeholder": "Enter your net monthly income",
+    "home.btn": "Start counting money",
+    "counter.message": "You have earned this year",
+    "counter.message-month": "Month: {salary}",
+    "counter.message-week": "This week: {salary}",
+    "counter.message-today": "Today: {salary}",
+    "counter.message-hour": "This hour: {salary}",
+    "counter.share-link": "Save this counter or share with your friend: {link}"
+}
