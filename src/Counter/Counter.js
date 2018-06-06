@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import { Col, Row } from 'reactstrap';
+import React, {Component} from 'react';
+import {Col, Row} from 'reactstrap';
 import moment from 'moment'
-import { FormattedMessage } from 'react-intl';
+import {FormattedMessage} from 'react-intl';
+import {SERVER_URL} from '../const';
 
 class Counter extends Component {
 
@@ -9,7 +10,7 @@ class Counter extends Component {
 
     componentDidMount() {
         const {match} = this.props;
-        fetch(`http://api-income.yaskovdev.com/${match.params.counterId}`).then(r => r.json()).then(json => {
+        fetch(`${SERVER_URL}/${match.params.counterId}`).then(r => r.json()).then(json => {
                 const {salary} = json;
                 const salaryPerMs = salary / (30 * 24 * 3600 * 1000);
 
