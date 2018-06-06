@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {withRouter} from 'react-router-dom';
-import {Button, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { Button, Col, Input, InputGroup, InputGroupAddon, Row } from 'reactstrap';
 import { FormattedMessage, injectIntl, intlShape } from 'react-intl';
 
 class SalaryInput extends Component {
@@ -59,7 +59,7 @@ class SalaryInput extends Component {
         if (income.trim() === '') {
             this.incomeInput.focus();
         } else {
-            fetch('http://timeismoney.ga/', {
+            fetch('http://api-income.yaskovdev.com/', {
                 method: 'POST',
                 headers: {
                     'Accept': 'application/json, text/plain, */*',
