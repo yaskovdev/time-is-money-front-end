@@ -49,13 +49,13 @@ class SalaryInput extends Component {
         </div>;
     };
 
-    getSalaryRegex = () => {
+    static getSalaryRegex() {
         return /^[0-9\b]+$/;
     };
 
     handleChange = ({target}) => {
         const {value} = target;
-        if(value.trim() === '' || this.getSalaryRegex.test(value)) {
+        if(value.trim() === '' || SalaryInput.getSalaryRegex.test(value)) {
             this.setState({income: value})
         }
     };
@@ -63,7 +63,7 @@ class SalaryInput extends Component {
     handleStart = () => {
         const {income} = this.state;
 
-        if (income.trim() === '' || this.getSalaryRegex.test(income)) {
+        if (income.trim() === '' || SalaryInput.getSalaryRegex.test(income)) {
             this.incomeInput.focus();
         } else {
             fetch(`${SERVER_URL}/`, {
