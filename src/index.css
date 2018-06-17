@@ -4,7 +4,7 @@ body {
   font-family: sans-serif;
 }
 
-button {
+.salary-button {
   border-radius: 20px;
   margin-left: 20px;
 }

@@ -35,7 +35,7 @@ class SalaryInput extends Component {
                                onChange={this.handleChange} innerRef={input => this.incomeInput = input}
                                onKeyPress={target => target.charCode === 13 && this.handleStart()}/>
                         <InputGroupAddon addonType="append">
-                            <Button color="primary" onClick={this.handleStart} className={'button'}>
+                            <Button color="primary" onClick={this.handleStart} className={'salary-button'}>
                                 <FormattedMessage
                                     id='home.btn'
                                     description='Start counting money'
