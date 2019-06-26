@@ -19,7 +19,7 @@ class SalaryInput extends Component {
         return <div>
             <Row style={{marginTop: '150px', marginBottom: '10px'}}>
                 <Col>
-                    <h1>
+                    <h1 className={'salary-input-text'}>
                         <FormattedMessage
                             id='home.title'
                             description='Time is money'
@@ -30,11 +30,11 @@ class SalaryInput extends Component {
             </Row>
             <Row>
                 <Col>
-                    <InputGroup>
-                        <Input autoFocus placeholder={placeholder} value={income}
+                    <InputGroup className={'salary-group'}>
+                        <Input autoFocus placeholder={placeholder} value={income} className={'salary-input'}
                                onChange={this.handleChange} innerRef={input => this.incomeInput = input}
                                onKeyPress={target => target.charCode === 13 && this.handleStart()}/>
-                        <InputGroupAddon addonType="append">
+                        <InputGroupAddon addonType="append" className={'button-section'}>
                             <Button color="primary" onClick={this.handleStart} className={'salary-button'}>
                                 <FormattedMessage
                                     id='home.btn'
@@ -49,9 +49,13 @@ class SalaryInput extends Component {
         </div>;
     };
 
+    getSalaryRegex = () => {
+        return /^[0-9\b]+$/;
+    };
+
     handleChange = ({target}) => {
         const {value} = target;
-        if(value.trim() === '' || /^[0-9\b]+$/.test(value)) {
+        if(value.trim() === '' || this.getSalaryRegex().test(value)) {
             this.setState({income: value})
         }
     };
@@ -59,7 +63,7 @@ class SalaryInput extends Component {
     handleStart = () => {
         const {income} = this.state;
 
-        if (!/^[0-9\b]+$/.test(income)) {
+        if (!this.getSalaryRegex().test(income)) {
             this.incomeInput.focus();
         } else {
             fetch(`${SERVER_URL}/`, {

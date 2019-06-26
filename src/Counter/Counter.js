@@ -32,7 +32,7 @@ class Counter extends Component {
         return (
             <div>
                 <Row style={{marginTop: '150px'}}>
-                    <Col className="display-3 text-center">
+                    <Col className="display-3 text-center counter-text">
                         <FormattedMessage
                             id='counter.message'
                             description='You have earned this year'
@@ -41,7 +41,7 @@ class Counter extends Component {
                     </Col>
                 </Row>
                 <Row style={{marginTop: '130px'}}>
-                    <Col className="display-1 text-center">{this.state.salaryThisYear}</Col>
+                    <Col className="display-1 text-center counter-text">{this.state.salaryThisYear}</Col>
                 </Row>
                 <Row style={{marginTop: '190px'}}>
                     <Col className="h4 text-center">
