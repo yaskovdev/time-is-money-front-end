@@ -59,7 +59,7 @@ class SalaryInput extends Component {
     handleStart = () => {
         const {income} = this.state;
 
-        if (income.trim() === '' || /^[0-9\b]+$/.test(income)) {
+        if (!/^[0-9\b]+$/.test(income)) {
             this.incomeInput.focus();
         } else {
             fetch(`${SERVER_URL}/`, {

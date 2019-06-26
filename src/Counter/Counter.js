@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Col, Row} from 'reactstrap';
-import moment from 'moment'
+import moment from 'moment';
 import {FormattedMessage} from 'react-intl';
 import {SERVER_URL} from '../const';
 
