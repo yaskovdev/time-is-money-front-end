@@ -55,7 +55,7 @@ class SalaryInput extends Component {
 
     handleChange = ({target}) => {
         const {value} = target;
-        if(value.trim() === '' || this.getSalaryRegex().test(value)) {
+        if (value.trim() === '' || this.getSalaryRegex().test(value)) {
             this.setState({income: value})
         }
     };
@@ -63,9 +63,7 @@ class SalaryInput extends Component {
     handleStart = () => {
         const {income} = this.state;
 
-        if (!this.getSalaryRegex().test(income)) {
-            this.incomeInput.focus();
-        } else {
+        if (this.getSalaryRegex().test(income)) {
             fetch(`${SERVER_URL}/`, {
                 method: 'POST',
                 headers: {
@@ -77,6 +75,8 @@ class SalaryInput extends Component {
                 const {token} = json;
                 this.props.history.push(`/c/${token}`);
             });
+        } else {
+            this.incomeInput.focus();
         }
     }
 }
