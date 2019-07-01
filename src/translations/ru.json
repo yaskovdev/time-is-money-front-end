@@ -1,6 +1,7 @@
 {
     "home.title": "Время - деньги!",
-    "home.placeholder": "Пожалуйста, введите ваш доход за месяц",
+    "home.label": "Ваш чистый месячный доход",
+    "home.placeholder": "Чистый доход",
     "home.btn": "Посчитать доходы",
     "counter.message": "За этот год вы заработали",
     "counter.message-month": "За месяц: {salary}",

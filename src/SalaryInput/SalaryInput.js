@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {Button, Col, Input, InputGroup, InputGroupAddon, Row} from 'reactstrap';
+import {Button, Col, FormGroup, Input, InputGroup, InputGroupAddon, InputGroupText, Label, Row} from 'reactstrap';
 import {FormattedMessage, injectIntl, intlShape} from 'react-intl';
 import {SERVER_URL} from "../const";
 
@@ -10,40 +10,53 @@ class SalaryInput extends Component {
 
     render() {
         const {income} = this.state;
+        const label = this.props.intl.formatMessage({
+            id: 'home.label',
+            description: 'Your net monthly income',
+            defaultMessage: 'Your net monthly income'
+        });
         const placeholder = this.props.intl.formatMessage({
             id: 'home.placeholder',
-            description: 'Enter your net monthly income',
-            defaultMessage: 'Enter your net monthly income'
+            description: 'Net income',
+            defaultMessage: 'Net income'
         });
 
-        return <div>
+        return <div style={{maxWidth: '200px', marginLeft: 'auto', marginRight: 'auto'}}>
             <Row style={{marginTop: '150px', marginBottom: '10px'}}>
                 <Col>
-                    <h1 className={'salary-input-text'}>
+                    <h3 className={'salary-input-text'}>
                         <FormattedMessage
                             id='home.title'
                             description='Time is money'
                             defaultMessage='Time is money'
                         />
-                    </h1>
+                    </h3>
                 </Col>
             </Row>
             <Row>
-                <Col>
-                    <InputGroup className={'salary-group'}>
-                        <Input autoFocus placeholder={placeholder} value={income} className={'salary-input'}
-                               onChange={this.handleChange} innerRef={input => this.incomeInput = input}
-                               onKeyPress={target => target.charCode === 13 && this.handleStart()}/>
-                        <InputGroupAddon addonType="append" className={'button-section'}>
-                            <Button color="primary" onClick={this.handleStart} className={'salary-button'}>
-                                <FormattedMessage
-                                    id='home.btn'
-                                    description='Start counting money'
-                                    defaultMessage='Start counting money'
-                                />
-                            </Button>
-                        </InputGroupAddon>
-                    </InputGroup>
+                <Col lg="12">
+                    <FormGroup>
+                        <Label for="salaryInput">{label}</Label>
+                        <InputGroup>
+                            <Input id="salaryInput" autoFocus placeholder={placeholder} value={income}
+                                   onChange={this.handleChange} innerRef={input => this.incomeInput = input}
+                                   onKeyPress={target => target.charCode === 13 && this.handleStart()}
+                                   maxlength={11}/>
+                            <InputGroupAddon addonType="append">
+                                <InputGroupText>&euro;</InputGroupText>
+                            </InputGroupAddon>
+                        </InputGroup>
+                    </FormGroup>
+                </Col>
+            </Row>
+            <Row>
+                <Col lg="12">
+                    <Button color="secondary" onClick={this.handleStart} className="float-right">
+                        <FormattedMessage
+                            id='home.btn'
+                            description='Start counters'
+                            defaultMessage='Start counters'/>
+                    </Button>
                 </Col>
             </Row>
         </div>;

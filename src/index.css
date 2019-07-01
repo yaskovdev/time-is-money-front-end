@@ -4,20 +4,6 @@ body {
     font-family: sans-serif;
 }
 
-.salary-button {
-    border-radius: 20px !important;
-    margin-left: 20px;
-    margin-top: 20px;
-}
-
-.button-section {
-    float: right;
-}
-
-.salary-input {
-    width: 100% !important;
-}
-
 @media only screen and (max-width: 330px) {
     .salary-input-text {
         font-size: 30px;
@@ -28,10 +14,6 @@ body {
     .salary-input-text {
         font-size: 25px;
     }
-}
-
-.salary-group {
-    display: block !important;
 }
 
 @media only screen and (max-width: 550px) {
