@@ -33,7 +33,7 @@ class Counter extends PureComponent {
                 }, 200)
             }
         )
-    };
+    }
 
     render() {
         const { t } = this.props
@@ -71,9 +71,9 @@ class Counter extends PureComponent {
                 </Row>
             </div>
         )
-    };
+    }
 
-    format = (number, fractionDigits = 2) => number.toLocaleString(undefined, {
+    format = (number, fractionDigits = 2) => number.toLocaleString([], {
         style: 'currency',
         currency: 'EUR',
         minimumFractionDigits: fractionDigits,

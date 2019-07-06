@@ -44,7 +44,7 @@ class SalaryInput extends PureComponent {
                 </Col>
             </Row>
         </div>
-    };
+    }
 
     getSalaryRegex = () => {
         return /^[0-9\b]+$/

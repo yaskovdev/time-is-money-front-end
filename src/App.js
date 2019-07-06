@@ -15,8 +15,8 @@ class App extends PureComponent {
                     <Route path="/c/:counterId" component={Counter}/>
                 </Container>
             </Router>
-        );
+        )
     }
 }
 
-export default App;
+export default App
